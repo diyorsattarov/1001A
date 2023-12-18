@@ -1,0 +1,24 @@
+version: '3'
+services:
+  microservice:
+    build: .
+    depends_on:
+      - redis
+    # Add other configurations like environment variables, volumes, etc.
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis-data:/data
+    # Only expose ports if necessary for development:
+    # ports:
+    #   - "6379:6379"
+
+volumes:
+  redis-data:
+    # Define options here if needed
+
+# Uncomment this for custom network settings
+# networks:
+#   default:
+#     driver: bridge
